@@ -6,7 +6,7 @@
             "request": "launch",
             "type": "al",
             "environmentType": "Sandbox",
-            "server": "4003ecb4-562a-47e7-8843-6a0af0c1209f",
+            "server": "http://localhost:8080/BC250/",
             "serverInstance": "BC250",
             "authentication": "Windows",
             "startupObjectId": 22,
@@ -17,20 +17,21 @@
             "enableSqlInformationDebugger": true,
             "tenant": "default",
             "usePublicURLFromServer": true,
-            "port": 7099
+            "schemaUpdateMode": "ForceSync",
+            "port": 7053
         },
-        {
-            "name": "Microsoft cloud sandbox",
-            "request": "launch",
-            "type": "al",
-            "environmentType": "Sandbox",
-            "environmentName": "Sandbox",
-            "startupObjectId": 22,
-            "startupObjectType": "Page",
-            "breakOnError": "All",
-            "launchBrowser": true,
-            "enableLongRunningSqlStatements": true,
-            "enableSqlInformationDebugger": true,
-        }
+        // {
+        //     "name": "Microsoft cloud sandbox",
+        //     "request": "launch",
+        //     "type": "al",
+        //     "environmentType": "Sandbox",
+        //     "environmentName": "Sandbox",
+        //     "startupObjectId": 22,
+        //     "startupObjectType": "Page",
+        //     "breakOnError": "All",
+        //     "launchBrowser": true,
+        //     "enableLongRunningSqlStatements": true,
+        //     "enableSqlInformationDebugger": true,
+        // }
     ]
 }
