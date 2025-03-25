@@ -1,6 +1,6 @@
-table 50102 "Posted Checklist Details"
+table 50102 "Posted Checklist Details_OP"
 {
-    Caption = 'Posted Checklist Details';
+    Caption = 'Posted Checklist Details OP';
     DataClassification = ToBeClassified;
 
     fields

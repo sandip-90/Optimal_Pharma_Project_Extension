@@ -1,8 +1,8 @@
-table 50100 SuppilerReturnDetails_OP
+table 50100 "Suppiler Return Details_OP"
 {
-    Caption = 'SuppilerReturnDetails_OP';
+    Caption = 'Suppiler Return Details OP';
     DataClassification = ToBeClassified;
-    
+
     fields
     {
         field(1; "No."; Code[20])

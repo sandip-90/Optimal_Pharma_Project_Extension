@@ -1,6 +1,6 @@
-table 50101 "CheckList Master"
+table 50101 "CheckList Master_OP"
 {
-    Caption = 'CheckList Master';
+    Caption = 'CheckList Master OP';
     DataClassification = ToBeClassified;
 
     fields

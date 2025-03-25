@@ -1,9 +1,9 @@
-page 50102 "Posted Checklist Details"
+page 50102 "Posted Checklist Details_OP"
 {
     ApplicationArea = All;
-    Caption = 'Posted Checklist Details';
+    Caption = 'Posted Checklist Details OP';
     PageType = List;
-    SourceTable = "Posted Checklist Details";
+    SourceTable = "Posted Checklist Details_OP";
     UsageCategory = Administration;
 
     layout

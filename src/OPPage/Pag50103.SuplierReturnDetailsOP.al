@@ -1,9 +1,9 @@
-page 50100 SuplierReturnDetails_OP
+page 50101 "Suplier Return Details_OP"
 {
     ApplicationArea = All;
-    Caption = 'SuplierReturnDetails_OP';
+    Caption = 'Suplier Return Details OP';
     PageType = List;
-    SourceTable = SuppilerReturnDetails_OP;
+    SourceTable = "Suppiler Return Details_OP";
     UsageCategory = Lists;
 
     layout

@@ -1,9 +1,9 @@
-page 50101 "Check List Master"
+page 50103 "Check List Master_OP"
 {
     ApplicationArea = All;
-    Caption = 'Checklist Master';
+    Caption = 'Checklist Master OP';
     PageType = List;
-    SourceTable = "CheckList Master";
+    SourceTable = "CheckList Master_OP";
     UsageCategory = Administration;
 
     layout
