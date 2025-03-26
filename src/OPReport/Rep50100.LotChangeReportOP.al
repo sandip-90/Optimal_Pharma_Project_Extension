@@ -6,9 +6,44 @@ report 50100 "Lot Change Report_OP"
     ProcessingOnly = true;
     dataset
     {
-        dataitem(LotNoInformation; "Lot No. Information")
+        dataitem(Integer; Integer)
         {
+            DataItemTableView = where(Number = const(1));
+            trigger OnAfterGetRecord()
+            var
+                InventorySetupOP: Record "Inventory Setup";
+                ItemJournalLineOP: Record "Item Journal Line";
+                LotNoInformationOP: Record "Lot No. Information";
+                Text001: Label 'Warning! Lot Change Template OR Lot Change Batch must not be blank.';
+                EntryNo: Integer;
+            begin
+                InventorySetupOP.Get();
+                If (InventorySetupOP."Lot Change Template" = '') AND (InventorySetupOP."Lot Change Batch" = '') then
+                    Error('%1', Text001);
 
+                If ItemJournalLineOP.FindLast() then
+                    EntryNo := ItemJournalLineOP."Line No." + 10000
+                else
+                    EntryNo := 10000;
+                ItemJournalLineOP.Init();
+                ItemJournalLineOP."Journal Template Name" := InventorySetupOP."Lot Change Template";
+                ItemJournalLineOP."Journal Batch Name" := InventorySetupOP."Lot Change Batch";
+                ItemJournalLineOP."Line No." := EntryNo;
+                ItemJournalLineOP."Posting Date" := WorkDate();
+                ItemJournalLineOP.Validate("Item No.", NewItemNo);
+                ItemJournalLineOP.Validate("Variant Code", NewVariantNo);
+                ItemJournalLineOP.Validate("Lot No.", OLDLotNo);
+
+                LotNoInformationOP.SetRange("Lot No.", OLDLotNo);
+                IF LotNoInformationOP.FindFirst() then begin
+                    LotNoInformationOP.CalcFields(Inventory);
+                    ItemJournalLineOP.Validate(Quantity, LotNoInformationOP.Inventory);
+                end;
+                ItemJournalLineOP."New Lot No." := NewLotNo;
+                ItemJournalLineOP."New Item Expiration Date" := ExpiryDate;
+                ItemJournalLineOP.Insert(true);
+
+            end;
         }
     }
     requestpage
@@ -28,15 +63,16 @@ report 50100 "Lot Change Report_OP"
                         var
                             LotInformation: Record "Lot No. Information";
                         begin
-                            LotNoInformation.SetRange("Lot No.", OLDLotNo);
-                            if LotNoInformation.FindFirst() then begin
-                                OldItemNo := LotNoInformation."Item No.";
-                                OldVariantNo := LotNoInformation."Variant Code";
+                            LotInformation.SetRange("Lot No.", OLDLotNo);
+                            if LotInformation.FindFirst() then begin
+                                OldItemNo := LotInformation."Item No.";
+                                OldVariantNo := LotInformation."Variant Code";
                             end
-                            else begin
-                                Clear(OldItemNo);
-                                Clear(OldVariantNo);
-                            end;
+                            else
+                                if OLDLotNo = '' then begin
+                                    Clear(OldItemNo);
+                                    Clear(OldVariantNo);
+                                end;
                         end;
                     }
                     field(OldItemNo; OldItemNo)
@@ -63,19 +99,16 @@ report 50100 "Lot Change Report_OP"
                             trigger OnValidate()
                             var
                                 LotInformation: Record "Lot No. Information";
-                                Text001: Label 'Warning! New Item No. must be same as old Item No.';
                             begin
-                                LotNoInformation.SetRange("Lot No.", OLDLotNo);
-                                If LotNoInformation.FindFirst() then begin
-                                    NewItemNo := LotNoInformation."Item No.";
-                                    NewVariantNo := LotNoInformation."Variant Code";
+                                LotInformation.SetRange("Lot No.", NewLotNo);
+                                If LotInformation.FindFirst() then begin
+                                    NewItemNo := LotInformation."Item No.";
+                                    NewVariantNo := LotInformation."Variant Code";
                                 end
-                                else begin
+                                else If NewLotNo = '' then begin
                                     Clear(NewItemNo);
                                     Clear(NewVariantNo);
                                 end;
-                                If OLDLotNo <> NewItemNo then
-                                    Error('%1', Text001);
                             end;
                         }
                         field(NewItemNo; NewItemNo)
@@ -89,13 +122,6 @@ report 50100 "Lot Change Report_OP"
                             ApplicationArea = All;
                             Caption = 'New Variant No.';
                             Editable = false;
-                            trigger OnValidate()
-                            var
-                                Text001: Label 'Warning! New Variant No. must be same as old New Variant No.';
-                            begin
-                                If NewVariantNo <> OldVariantNo then
-                                    Error('%1', Text001);
-                            end;
                         }
                         field(ExpiryDate; ExpiryDate)
                         {
@@ -113,6 +139,16 @@ report 50100 "Lot Change Report_OP"
             }
         }
     }
+    trigger OnPreReport()
+    var
+        Text001: Label 'Warning! New Item No. must be same as old Item No.';
+        Text002: Label 'Warning! New Variant No. must be same as old New Variant No.';
+    begin
+        If OldItemNo <> NewItemNo then
+            Error('%1', Text001);
+        If OldVariantNo <> NewVariantNo then
+            Error('%1', Text002);
+    end;
 
     var
         OLDLotNo: Code[20];
