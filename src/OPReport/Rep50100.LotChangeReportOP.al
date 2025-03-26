@@ -32,6 +32,10 @@ report 50100 "Lot Change Report_OP"
                             if LotNoInformation.FindFirst() then begin
                                 OldItemNo := LotNoInformation."Item No.";
                                 OldVariantNo := LotNoInformation."Variant Code";
+                            end
+                            else begin
+                                Clear(OldItemNo);
+                                Clear(OldVariantNo);
                             end;
                         end;
                     }
@@ -59,12 +63,19 @@ report 50100 "Lot Change Report_OP"
                             trigger OnValidate()
                             var
                                 LotInformation: Record "Lot No. Information";
+                                Text001: Label 'Warning! New Item No. must be same as old Item No.';
                             begin
                                 LotNoInformation.SetRange("Lot No.", OLDLotNo);
-                                if LotNoInformation.FindFirst() then begin
+                                If LotNoInformation.FindFirst() then begin
                                     NewItemNo := LotNoInformation."Item No.";
                                     NewVariantNo := LotNoInformation."Variant Code";
+                                end
+                                else begin
+                                    Clear(NewItemNo);
+                                    Clear(NewVariantNo);
                                 end;
+                                If OLDLotNo <> NewItemNo then
+                                    Error('%1', Text001);
                             end;
                         }
                         field(NewItemNo; NewItemNo)
@@ -78,6 +89,13 @@ report 50100 "Lot Change Report_OP"
                             ApplicationArea = All;
                             Caption = 'New Variant No.';
                             Editable = false;
+                            trigger OnValidate()
+                            var
+                                Text001: Label 'Warning! New Variant No. must be same as old New Variant No.';
+                            begin
+                                If NewVariantNo <> OldVariantNo then
+                                    Error('%1', Text001);
+                            end;
                         }
                         field(ExpiryDate; ExpiryDate)
                         {
