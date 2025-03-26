@@ -17,7 +17,7 @@ report 50100 "Lot Change Report_OP"
         {
             area(Content)
             {
-                group(GroupName)
+                group("Old Lot Information")
                 {
                     field(OLDLotNo; OLDLotNo)
                     {
@@ -49,34 +49,41 @@ report 50100 "Lot Change Report_OP"
                         TableRelation = "Lot No. Information"."Variant Code";
                         Editable = false;
                     }
-                    field(NewLotNo; NewLotNo)
+                    group("New Lot Information")
                     {
-                        ApplicationArea = All;
-                        Caption = 'New Lot No.';
-                        TableRelation = "Lot No. Information"."Lot No.";
-                        trigger OnValidate()
-                        var
-                            LotInformation: Record "Lot No. Information";
-                        begin
-                            LotNoInformation.SetRange("Lot No.", OLDLotNo);
-                            if LotNoInformation.FindFirst() then begin
-                                NewItemNo := LotNoInformation."Item No.";
-                                NewVariantNo := LotNoInformation."Variant Code";
+                        field(NewLotNo; NewLotNo)
+                        {
+                            ApplicationArea = All;
+                            Caption = 'New Lot No.';
+                            TableRelation = "Lot No. Information"."Lot No.";
+                            trigger OnValidate()
+                            var
+                                LotInformation: Record "Lot No. Information";
+                            begin
+                                LotNoInformation.SetRange("Lot No.", OLDLotNo);
+                                if LotNoInformation.FindFirst() then begin
+                                    NewItemNo := LotNoInformation."Item No.";
+                                    NewVariantNo := LotNoInformation."Variant Code";
+                                end;
                             end;
-                        end;
-
-                    }
-                    field(NewItemNo; NewItemNo)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'New Item No.';
-                        Editable = false;
-                    }
-                    field(NewVariantNo; NewVariantNo)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'New Variant No.';
-                        Editable = false;
+                        }
+                        field(NewItemNo; NewItemNo)
+                        {
+                            ApplicationArea = All;
+                            Caption = 'New Item No.';
+                            Editable = false;
+                        }
+                        field(NewVariantNo; NewVariantNo)
+                        {
+                            ApplicationArea = All;
+                            Caption = 'New Variant No.';
+                            Editable = false;
+                        }
+                        field(ExpiryDate; ExpiryDate)
+                        {
+                            ApplicationArea = All;
+                            Caption = 'Expiry Date';
+                        }
                     }
                 }
             }
@@ -97,4 +104,5 @@ report 50100 "Lot Change Report_OP"
         NewLotNo: Code[20];
         NewItemNo: Code[20];
         NewVariantNo: Code[20];
+        ExpiryDate: Date;
 }
