@@ -33,6 +33,7 @@ report 50100 "Lot Change Report_OP"
                 ItemJournalLineOP.Validate("Item No.", NewItemNo);
                 ItemJournalLineOP.Validate("Variant Code", NewVariantNo);
                 ItemJournalLineOP.Validate("Lot No.", OLDLotNo);
+                ItemJournalLineOP."Lot Changed" := true;
 
                 LotNoInformationOP.SetRange("Lot No.", OLDLotNo);
                 IF LotNoInformationOP.FindFirst() then begin

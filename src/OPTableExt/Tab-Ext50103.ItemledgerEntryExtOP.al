@@ -6,6 +6,7 @@ tableextension 50103 "Item ledger Entry_Ext_OP" extends "Item Ledger Entry"
         {
             Caption = 'Lot Changed';
             DataClassification = ToBeClassified;
+            Editable = false;
         }
     }
 }
