@@ -11,7 +11,7 @@ pageextension 50105 SalesOrder_EXT_OP extends "Sales Order"
                 PromotedCategory = Process;
                 Image = CheckList;
                 Caption = 'Checklist';
-                RunObject = Page "Checklist page_Ext_OP";
+                RunObject = Page "Checklist Page_OP";
             }
         }
     }

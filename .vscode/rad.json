@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[{"Kind":106,"Name":"RequestOptionsPage","Namespace":""},{"Id":50100,"Kind":13,"Name":"Lot Change Report_OP","Namespace":""}],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50104,"Kind":12,"Name":"Checklist page_Ext_OP","Namespace":""},{"Id":50103,"Kind":12,"Name":"Check List Master_OP","Namespace":""},{"Id":50100,"Kind":26,"Name":"GeneratedPermission","Namespace":""},{"Id":50105,"Kind":16,"Name":"SalesOrder_EXT_OP","Namespace":""},{"Id":50101,"Kind":10,"Name":"CheckList Master_OP","Namespace":""}],"Removed":[]}

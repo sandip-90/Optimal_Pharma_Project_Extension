@@ -4,7 +4,7 @@ permissionset 50100 GeneratedPermission
     Permissions = tabledata "Suppiler Return Details_OP" = RIMD,
         table "Suppiler Return Details_OP" = X,
         page "Suplier Return Details_OP" = X,
-        tabledata "CheckList Master_OP" = RIMD,
+        tabledata "Checklist Master_OP" = RIMD,
         tabledata "Posted Checklist Details_OP" = RIMD,
         table "CheckList Master_OP" = X,
         table "Posted Checklist Details_OP" = X,

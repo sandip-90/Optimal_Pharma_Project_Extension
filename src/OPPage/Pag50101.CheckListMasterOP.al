@@ -14,21 +14,27 @@ page 50103 "Check List Master_OP"
             {
                 field("SN"; Rec."SN")
                 {
+                    ApplicationArea = all;
                 }
                 field(Questionaire; Rec.Questionaire)
                 {
+                    ApplicationArea = all;
                 }
                 field("Type"; Rec."Type")
                 {
+                    ApplicationArea = all;
                     Style = Strong;
                 }
                 field(Block; Rec.Block)
                 {
+                    ApplicationArea = all;
                 }
                 field("Sale/Purchase"; Rec."Sale/Purchase")
                 {
+                    ApplicationArea = all;
                 }
             }
         }
     }
+
 }
