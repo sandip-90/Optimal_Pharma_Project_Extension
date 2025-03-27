@@ -1,7 +1,7 @@
-page 50103 "Check List Master_OP"
+page 50104 "Checklist page_Ext_OP"
 {
     ApplicationArea = All;
-    Caption = 'Checklist Master OP';
+    Caption = 'Checklist page_Ext_OP';
     PageType = List;
     SourceTable = "CheckList Master_OP";
     UsageCategory = Administration;
@@ -12,7 +12,7 @@ page 50103 "Check List Master_OP"
         {
             repeater(General)
             {
-                field("SN"; Rec."SN")
+                field(SN; Rec.SN)
                 {
                 }
                 field(Questionaire; Rec.Questionaire)
@@ -22,11 +22,16 @@ page 50103 "Check List Master_OP"
                 {
                     Style = Strong;
                 }
+                field("Answer"; Rec.Answer)
+                {
+                }
                 field(Block; Rec.Block)
                 {
+                    Visible = false;
                 }
                 field("Sale/Purchase"; Rec."Sale/Purchase")
                 {
+                    Caption = 'Posting Type';
                 }
             }
         }

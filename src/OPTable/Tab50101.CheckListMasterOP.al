@@ -23,7 +23,11 @@ table 50101 "CheckList Master_OP"
         }
         field(5; "Sale/Purchase"; Enum SalesPurchaseEnum)
         {
-            Caption = 'Sale/Purchase';
+            Caption = 'Posting Type';
+        }
+        field(6; Answer; Enum AnswerEnum)
+        {
+            Caption = 'Answer';
         }
     }
     keys
