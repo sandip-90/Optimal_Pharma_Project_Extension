@@ -1,7 +1,7 @@
 page 50104 "CheckList Page_OP"
 {
     ApplicationArea = All;
-    Caption = 'Checklist page_Ext_OP';
+    Caption = 'Checklist Page OP';
     PageType = List;
     SourceTable = "CheckList Master_OP";
     UsageCategory = Administration;
@@ -14,23 +14,25 @@ page 50104 "CheckList Page_OP"
             {
                 field(SN; Rec.SN)
                 {
+                    ApplicationArea = ALL;
+                    Editable = FieldEditable;
                 }
                 field(Questionaire; Rec.Questionaire)
                 {
+                    ApplicationArea = ALL;
+                    Editable = FieldEditable;
                 }
                 field("Type"; Rec."Type")
                 {
                     ApplicationArea = ALL;
                     Editable = FieldEditable;
                     Style = Strong;
-                    Editable = false;
-                    trigger OnValidate()
-                    begin
-                        UpdateLineEditability();
-                    end;
                 }
                 field("Answer"; Rec.Answer)
                 {
+                    ApplicationArea = ALL;
+                    Editable = FieldEditable;
+
                 }
                 field(Block; Rec.Block)
                 {
@@ -47,4 +49,31 @@ page 50104 "CheckList Page_OP"
             }
         }
     }
+    trigger OnOpenPage()
+    var
+        myInt: Integer;
+    begin
+        UpdateLineEditability();
+    end;
+
+    trigger OnAfterGetRecord()
+    var
+        myInt: Integer;
+    begin
+        UpdateLineEditability();
+    end;
+
+    local procedure UpdateLineEditability()
+    var
+        myInt: Integer;
+    begin
+        Clear(FieldEditable);
+        if Rec.Type = Rec.Type::Heading then
+            FieldEditable := false
+        else
+            FieldEditable := true;
+    end;
+
+    var
+        FieldEditable: Boolean;
 }
