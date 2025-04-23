@@ -36,5 +36,4 @@ page 50103 "Check List Master_OP"
             }
         }
     }
-
 }

@@ -6,6 +6,7 @@ page 50105 "Item Pictures_OP"
     LinksAllowed = false;
     PageType = CardPart;
     SourceTable = ItemsPicturesTab_OP;
+    ApplicationArea = All;
     layout
     {
         area(content)

@@ -1,4 +1,4 @@
-pageextension 50105 "SalesOrder EXT_OP" extends "Sales Order"
+pageextension 50105 "SalesOrder Ext_OP" extends "Sales Order"
 {
     actions
     {

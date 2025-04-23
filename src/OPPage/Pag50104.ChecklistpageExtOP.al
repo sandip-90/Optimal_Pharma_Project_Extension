@@ -32,7 +32,6 @@ page 50104 "CheckList Page_OP"
                 {
                     ApplicationArea = ALL;
                     Editable = FieldEditable;
-
                 }
                 field(Block; Rec.Block)
                 {
