@@ -30,22 +30,4 @@ page 50106 "Pharma Attributes"
             }
         }
     }
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedIsBig = true;
-                PromotedCategory = Process;
-                ToolTip = 'Executes the ActionName action.';
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
 }

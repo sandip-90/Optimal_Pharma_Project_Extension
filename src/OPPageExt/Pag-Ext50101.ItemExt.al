@@ -45,10 +45,22 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
                     PharmaAttributeOP.Reset();
                     PharmaAttributeOP.SetRange(PharmaAttributeOP."Item No.", rec."No.");
                     if PharmaAttributeOP.FindFirst() then begin
-                        Rec."Search Description" := PharmaAttributeOP."Pharma Attribute" + ' ' + PharmaAttributeOP."Pharma Attribute Value";
+                        Rec.Description := rec."No." + ' ' + PharmaAttributeOP."Pharma Attribute" + ' ' + PharmaAttributeOP."Pharma Attribute Value";
                         rec.Modify();
                     end;
                     CurrPage.Update();
+                end;
+            }
+            action("Pharma Attributes")
+            {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedOnly = true;
+                PromotedCategory = New;
+                trigger OnAction()
+                begin
+                    Page.RunModal(Page::"Pharma Attributes");
                 end;
             }
         }
