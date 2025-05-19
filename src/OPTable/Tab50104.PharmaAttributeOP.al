@@ -18,6 +18,16 @@ table 50104 "Pharma Attribute_OP"
                 DimensionValueOP.SetRange("Dimension Code", InventorySetupOP."Pharma Attribute Dimension");
                 IF Page.RunModal(Page::"Dimension Values", DimensionValueOP) = Action::LookupOK then
                     "Pharma Attribute" := DimensionValueOP.Code;
+                Validate("Pharma Attribute");
+            end;
+
+            trigger OnValidate()
+            var
+                DimensionValue: Record "Dimension Value";
+            begin
+                DimensionValue.SetRange(Code, Rec."Pharma Attribute");
+                if DimensionValue.FindFirst() then
+                    Rec."Sequence No." := DimensionValue."Sequence No.";
             end;
         }
         field(2; "Pharma Attribute Value"; Text[100])
@@ -28,6 +38,10 @@ table 50104 "Pharma Attribute_OP"
         {
             Caption = 'Item No.';
             TableRelation = Item;
+        }
+        field(4; "Sequence No."; Integer)
+        {
+            DataClassification = ToBeClassified;
         }
 
     }

@@ -13,5 +13,8 @@ permissionset 50100 GeneratedPermission
         tabledata ItemsPicturesTab_OP = RIMD,
         table ItemsPicturesTab_OP = X,
         page "CheckList Page_OP" = X,
-        page "Item Pictures_OP" = X;
+        page "Item Pictures_OP" = X,
+        tabledata "Pharma Attribute_OP" = RIMD,
+        table "Pharma Attribute_OP" = X,
+        page "Pharma Attributes" = X;
 }

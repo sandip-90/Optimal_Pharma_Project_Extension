@@ -41,12 +41,21 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
                 var
                     ItemAttributeValueSelectionOP: Record "Item Attribute Value Selection";
                     PharmaAttributeOP: Record "Pharma Attribute_OP";
+                    PharmaAttributeValue: Text;
+                    Text001: Label 'Item Description has been updated.';
                 begin
+                    Clear(Rec.Description);
+                    Clear(PharmaAttributeValue);
                     PharmaAttributeOP.Reset();
-                    PharmaAttributeOP.SetRange(PharmaAttributeOP."Item No.", rec."No.");
-                    if PharmaAttributeOP.FindFirst() then begin
-                        Rec.Description := rec."No." + ' ' + PharmaAttributeOP."Pharma Attribute" + ' ' + PharmaAttributeOP."Pharma Attribute Value";
+                    PharmaAttributeOP.SetRange(PharmaAttributeOP."Item No.", Rec."No.");
+                    if PharmaAttributeOP.FindSet() then begin
+                        repeat
+                            IF PharmaAttributeOP."Sequence No." <> 0 then
+                                PharmaAttributeValue += ' ' + PharmaAttributeOP."Pharma Attribute Value";
+                        until PharmaAttributeOP.Next() = 0;
+                        Rec.Description := Rec."No." + '' + PharmaAttributeValue;
                         rec.Modify();
+                        Message('%1', Text001);
                     end;
                     CurrPage.Update();
                 end;
@@ -59,8 +68,11 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
                 PromotedOnly = true;
                 PromotedCategory = New;
                 trigger OnAction()
+                var
+                    PharmaAttributeOP: Record "Pharma Attribute_OP";
                 begin
-                    Page.RunModal(Page::"Pharma Attributes");
+                    PharmaAttributeOP.SetRange("Item No.", Rec."No.");
+                    Page.RunModal(Page::"Pharma Attributes", PharmaAttributeOP);
                 end;
             }
         }
