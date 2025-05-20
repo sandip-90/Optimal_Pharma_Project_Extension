@@ -27,11 +27,6 @@ page 50106 "Pharma Attributes"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Item No. field.';
                 }
-                field("Sequence No."; Rec."Sequence No.")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Sequence No. field.';
-                }
             }
         }
     }
