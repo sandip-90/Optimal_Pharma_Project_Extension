@@ -50,10 +50,9 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
                     PharmaAttributeOP.SetRange(PharmaAttributeOP."Item No.", Rec."No.");
                     if PharmaAttributeOP.FindSet() then begin
                         repeat
-                            IF PharmaAttributeOP."Sequence No." <> 0 then
-                                PharmaAttributeValue += ' ' + PharmaAttributeOP."Pharma Attribute Value";
+                            PharmaAttributeValue += ' ' + PharmaAttributeOP."Pharma Attribute Value";
                         until PharmaAttributeOP.Next() = 0;
-                        Rec.Description := Rec."No." + '' + PharmaAttributeValue;
+                        Rec.Description := PharmaAttributeValue;
                         rec.Modify();
                         Message('%1', Text001);
                     end;
