@@ -16,34 +16,40 @@ page 50104 "CheckList Page_OP"
                 {
                     ApplicationArea = ALL;
                     Editable = FieldEditable;
+                    ToolTip = 'Specifies the value of the SN field.';
                 }
                 field(Questionaire; Rec.Questionaire)
                 {
                     ApplicationArea = ALL;
                     Editable = FieldEditable;
+                    ToolTip = 'Specifies the value of the Questionaire field.';
                 }
                 field("Type"; Rec."Type")
                 {
                     ApplicationArea = ALL;
                     Editable = FieldEditable;
                     Style = Strong;
+                    ToolTip = 'Specifies the value of the Type field.';
                 }
                 field("Answer"; Rec.Answer)
                 {
                     ApplicationArea = ALL;
                     Editable = FieldEditable;
+                    ToolTip = 'Specifies the value of the Answer field.';
                 }
                 field(Block; Rec.Block)
                 {
                     ApplicationArea = ALL;
                     Editable = FieldEditable;
                     Visible = false;
+                    ToolTip = 'Specifies the value of the Block field.';
                 }
                 field("Sale/Purchase"; Rec."Sale/Purchase")
                 {
                     ApplicationArea = ALL;
                     Caption = 'Posting Type';
                     Editable = FieldEditable;
+                    ToolTip = 'Specifies the value of the Posting Type field.';
                 }
             }
         }

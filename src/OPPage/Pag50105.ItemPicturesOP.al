@@ -5,7 +5,7 @@ page 50105 "Item Pictures_OP"
     InsertAllowed = false;
     LinksAllowed = false;
     PageType = CardPart;
-    SourceTable = ItemsPicturesTab_OP;
+    SourceTable = "Items Pictures Tab_OP";
     ApplicationArea = All;
     layout
     {
@@ -44,6 +44,7 @@ page 50105 "Item Pictures_OP"
                 ApplicationArea = All;
                 Caption = 'Next';
                 Image = NextRecord;
+                ToolTip = 'Executes the Next action.';
                 trigger OnAction()
                 begin
                     Rec.Next(1);
@@ -54,6 +55,7 @@ page 50105 "Item Pictures_OP"
                 ApplicationArea = All;
                 Caption = 'Previous';
                 Image = PreviousRecord;
+                ToolTip = 'Executes the Previous action.';
                 trigger OnAction()
                 begin
                     Rec.Next(-1);
@@ -74,7 +76,7 @@ page 50105 "Item Pictures_OP"
     }
     trigger OnAfterGetCurrRecord()
     var
-        ItemPictureGallery: Record ItemsPicturesTab_OP;
+        ItemPictureGallery: Record "Items Pictures Tab_OP";
     begin
         ImageCount := '';
         ItemPictureGallery.Reset();
@@ -110,7 +112,7 @@ page 50105 "Item Pictures_OP"
     local procedure ImportFromDevice();
     var
         Item: Record Item;
-        ItemPictureGallery: Record ItemsPicturesTab_OP;
+        ItemPictureGallery: Record "Items Pictures Tab_OP";
         PictureInStream: InStream;
         FromFileName: Text;
         UploadFileMsg: Label 'Please select the image to upload';
@@ -133,7 +135,7 @@ page 50105 "Item Pictures_OP"
 
     local procedure FindLastItemPictureNo(ItemNo: Code[20]): Integer
     var
-        ItemPictureGallery: Record ItemsPicturesTab_OP;
+        ItemPictureGallery: Record "Items Pictures Tab_OP";
     begin
         ItemPictureGallery.Reset();
         ItemPictureGallery.SetCurrentKey("Item No.", "Item Picture No.");
@@ -145,7 +147,7 @@ page 50105 "Item Pictures_OP"
 
     local procedure ResetOrdering()
     var
-        ItemPictureGallery: Record ItemsPicturesTab_OP;
+        ItemPictureGallery: Record "Items Pictures Tab_OP";
         Ordering: Integer;
     begin
         Ordering := 1;
@@ -160,6 +162,6 @@ page 50105 "Item Pictures_OP"
     end;
 
     var
-        PicArray: array[10] of Record "ItemsPicturesTab_OP";
+        PicArray: array[10] of Record "Items Pictures Tab_OP";
         i: Integer;
 }

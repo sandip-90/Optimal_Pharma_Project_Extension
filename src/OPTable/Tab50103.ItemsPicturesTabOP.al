@@ -1,4 +1,4 @@
-table 50103 "ItemsPicturesTab_OP"
+table 50103 "Items Pictures Tab_OP"
 {
     Caption = 'Item Picture Galley';
     DataClassification = CustomerContent;

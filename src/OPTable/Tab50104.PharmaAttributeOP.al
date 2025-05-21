@@ -7,12 +7,11 @@ table 50104 "Pharma Attribute_OP"
     {
         field(1; "Pharma Attribute"; Code[20])
         {
-            Caption = 'Pharma Attribute';
+            DataClassification = ToBeClassified;
             trigger OnLookup()
             var
                 DimensionValueOP: Record "Dimension Value";
                 InventorySetupOP: Record "Inventory Setup";
-
             begin
                 InventorySetupOP.Get();
                 DimensionValueOP.SetRange("Dimension Code", InventorySetupOP."Pharma Attribute Dimension");
@@ -22,12 +21,16 @@ table 50104 "Pharma Attribute_OP"
         }
         field(2; "Pharma Attribute Value"; Text[100])
         {
-            Caption = 'Pharma Attribute Value';
+            DataClassification = ToBeClassified;
         }
         field(3; "Item No."; Code[20])
         {
-            Caption = 'Item No.';
+            DataClassification = ToBeClassified;
             TableRelation = Item;
+        }
+        field(4; "Description Creation"; Boolean)
+        {
+            DataClassification = ToBeClassified;
         }
 
     }

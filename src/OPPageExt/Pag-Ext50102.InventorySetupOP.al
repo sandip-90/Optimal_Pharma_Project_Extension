@@ -8,6 +8,7 @@ pageextension 50102 "Inventory Setup_OP" extends "Inventory Setup"
             group("Pharma Details")
             {
                 Caption = 'Pharma Details';
+
                 field("Pharma attribute Dimension"; Rec."Pharma Attribute Dimension")
                 {
                     ApplicationArea = All;

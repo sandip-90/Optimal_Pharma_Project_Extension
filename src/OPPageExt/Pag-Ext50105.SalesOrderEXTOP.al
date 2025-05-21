@@ -12,6 +12,7 @@ pageextension 50105 "SalesOrder Ext_OP" extends "Sales Order"
                 Image = CheckList;
                 Caption = 'Checklist';
                 RunObject = Page "Checklist Page_OP";
+                ToolTip = 'Executes the Checklist action.';
                 trigger OnAction()
                 var
                     CheckListMasterOP: Record "CheckList Master_OP";

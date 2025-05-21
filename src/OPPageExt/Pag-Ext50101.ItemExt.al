@@ -23,6 +23,7 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
             field("Search Description1"; Rec."Search Description")
             {
                 ApplicationArea = All;
+                ToolTip = 'Specifies a search description that you use to find the item in lists.';
             }
         }
     }
@@ -37,6 +38,7 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 PromotedCategory = New;
+                ToolTip = 'Executes the Update Item Description action.';
                 trigger OnAction()
                 var
                     ItemAttributeValueSelectionOP: Record "Item Attribute Value Selection";
@@ -69,6 +71,7 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
                 PromotedIsBig = true;
                 PromotedOnly = true;
                 PromotedCategory = New;
+                ToolTip = 'Executes the Pharma Attributes action.';
                 trigger OnAction()
                 var
                     PharmaAttributeOP: Record "Pharma Attribute_OP";
