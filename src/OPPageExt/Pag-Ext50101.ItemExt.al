@@ -17,6 +17,7 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
         modify("Search Description")
         {
             Caption = 'Display Name';
+            Editable = false;
         }
         addafter(Description)
         {
@@ -24,6 +25,7 @@ pageextension 50101 "Item Card Ext_OP" extends "Item Card"
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies a search description that you use to find the item in lists.';
+                Editable = false;
             }
         }
     }
