@@ -1,4 +1,4 @@
-tableextension 50100 "Inventory Setup OP" extends "Inventory Setup"
+tableextension 50100 "Inventory Setup_OP" extends "Inventory Setup"
 {
 
     fields

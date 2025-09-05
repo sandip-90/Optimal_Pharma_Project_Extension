@@ -15,8 +15,10 @@ table 50104 "Pharma Attribute_OP"
             begin
                 InventorySetupOP.Get();
                 DimensionValueOP.SetRange("Dimension Code", InventorySetupOP."Pharma Attribute Dimension");
-                IF Page.RunModal(Page::"Dimension Values", DimensionValueOP) = Action::LookupOK then
+                IF Page.RunModal(Page::"Dimension Values", DimensionValueOP) = Action::LookupOK then begin
                     "Pharma Attribute" := DimensionValueOP.Code;
+                    "Description Creation" := DimensionValueOP."Description Creation";
+                end;
             end;
         }
         field(2; "Pharma Attribute Value"; Text[100])

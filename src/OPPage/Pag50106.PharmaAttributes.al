@@ -32,6 +32,7 @@ page 50106 "Pharma Attributes"
                 }
                 field("Description Creation"; Rec."Description Creation")
                 {
+                    Editable = false;
                     Caption = 'Description Creation';
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Description Creation field.';
