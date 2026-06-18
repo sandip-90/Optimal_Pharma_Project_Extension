@@ -111,7 +111,7 @@ page 50105 "Item Pictures_OP"
 
     local procedure ImportFromDevice();
     var
-        Item: Record Item;
+        Item: Record item;
         ItemPictureGallery: Record "Items Pictures Tab_OP";
         PictureInStream: InStream;
         FromFileName: Text;
